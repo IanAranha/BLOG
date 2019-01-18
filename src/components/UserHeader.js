@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions';
+// import { fetchUser } from '../actions';
 
 
 class UserHeader extends React.Component{
-    
-    componentDidMount(){
-        this.props.fetchUser(this.props.userId);
-    }
+    //Because previously on PostList.js, we wrote code to fetch the User
+    //using unique ids, we don't need to use this action creater here any more.
+
+    // componentDidMount(){
+    //     this.props.fetchUser(this.props.userId);
+    // }
 
     render(){
         // const user = this.props.users.find((user) => user.id === this.props.userId);
@@ -24,7 +26,9 @@ class UserHeader extends React.Component{
     }
 
 
-    export default connect(mapStateToProps, { fetchUser })(UserHeader);
+    export default connect(mapStateToProps)
+                //  { fetchUser })
+                 (UserHeader);
 
 
     
