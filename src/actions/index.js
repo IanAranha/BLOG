@@ -13,12 +13,16 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     console.log(_.map(getState().posts, 'userId'))
 
     //makes an array of all unique userIds
-    console.log(_.uniq(_.map(getState().posts, 'userId')))
-    const userIds = (_.uniq(_.map(getState().posts, 'userId')))
+    //console.log(_.uniq(_.map(getState().posts, 'userId')))
+    //const userIds = (_.uniq(_.map(getState().posts, 'userId')))
 
     //now that posts are loaded, using the userId, fetch each user.
-    userIds.forEach((id) => {dispatch(fetchUser(id))})
-
+    //userIds.forEach((id) => {dispatch(fetchUser(id))})
+    _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach((id)=>{dispatch(fetchUser(id))})
+    .value()
 }
 
 export const fetchPosts = () => async dispatch => {

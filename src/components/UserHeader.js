@@ -26,9 +26,7 @@ class UserHeader extends React.Component{
     }
 
 
-    export default connect(mapStateToProps)
-                //  { fetchUser })
-                 (UserHeader);
+    export default connect(mapStateToProps)(UserHeader);
 
 
     
